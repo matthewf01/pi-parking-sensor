@@ -30,6 +30,12 @@ GPIO.output(LED_GREEN,False)
 # Allow module to settle
 time.sleep(0.5)
 
+def lightsoff():
+  GPIO.output(LED_GREEN,False)
+  GPIO.output(LED_RED, False)
+  
+  
+'''
 #Light test
 GPIO.output(LED_RED, True)
 time.sleep(1)
@@ -38,7 +44,7 @@ time.sleep(1)
 GPIO.output(LED_RED, False)
 time.sleep(1)
 GPIO.output(LED_GREEN,False)
-
+'''
 
 print "Starting ultrasonic distance measure"
 
@@ -49,9 +55,12 @@ GPIO.output(GPIO_TRIGGER, False)
 start = time.time()
 while GPIO.input(GPIO_ECHO)==0:
   start = time.time()
+  GPIO.output(LED_GREEN,True)
 
 while GPIO.input(GPIO_ECHO)==1:
   stop = time.time()
+  GPIO.output(LED_GREEN,False)
+  GPIO.output(LED_RED, True)
 
 # Calculate pulse length
 elapsed = stop-start
@@ -67,3 +76,4 @@ print "Distance : %.1f" % distance
 
 # Reset GPIO settings
 GPIO.cleanup()
+lightsoff()
