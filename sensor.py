@@ -111,7 +111,7 @@ try:
     print "Distance : %.1f" % distance
     if distance > dist_warn:
      slowblink(LED_GREEN)
-    time.sleep(0.5)
+
     elseif distance <= dist_warn and > dist_stop:
       fastblink(red)
     elseif distance < dist_warn and = dist_stop + dist_stop_threshold:
@@ -120,7 +120,7 @@ try:
       hyperblink(red)
     else
       lightsoff()
-    
+    time.sleep(0.5)
 
 #  elseif distance <= distwarn or
 
