@@ -56,9 +56,9 @@ def hyperblink(color):
   GPIO.output(color,False)
   time.sleep(0.06)
   
-def lightson()
-  GPIO.output(LED_GREEN,False)
-  GPIO.output(LED_RED, False)
+def lightson():
+  GPIO.output(LED_GREEN,True)
+  GPIO.output(LED_RED, True)
   
 def lightsoff():
   GPIO.output(LED_GREEN,False)
