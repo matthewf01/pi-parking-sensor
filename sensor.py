@@ -56,6 +56,10 @@ def hyperblink(color):
   GPIO.output(color,False)
   time.sleep(0.06)
   
+def lightson()
+  GPIO.output(LED_GREEN,False)
+  GPIO.output(LED_RED, False)
+  
 def lightsoff():
   GPIO.output(LED_GREEN,False)
   GPIO.output(LED_RED, False)
@@ -108,6 +112,14 @@ try:
     if distance > dist_warn:
      slowblink(LED_GREEN)
     time.sleep(0.5)
+    elseif distance <= dist_warn and > dist_stop:
+      fastblink(red)
+    elseif distance < dist_warn and = dist_stop + dist_stop_threshold:
+      lightson()
+    elseif distanance < dist_stop - dist_stop_threshold:
+      hyperblink(red)
+    else
+      lightsoff()
     
 
 #  elseif distance <= distwarn or
