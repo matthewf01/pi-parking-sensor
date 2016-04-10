@@ -111,9 +111,9 @@ try:
     print "Distance : %.1f" % distance
     if distance > dist_warn:
      slowblink(LED_GREEN)
-    elif distance <= dist_warn and > dist_stop:
+    elif distance <= dist_warn and distance > dist_stop:
       fastblink(red)
-    elif distance < dist_warn and = dist_stop + dist_stop_threshold:
+    elif distance < dist_warn and distance = dist_stop + dist_stop_threshold:
       lightson()
     elif distanance < dist_stop - dist_stop_threshold:
       hyperblink(red)
