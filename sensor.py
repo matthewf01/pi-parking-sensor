@@ -117,7 +117,7 @@ try:
       lightson()
     elif distanance < dist_stop - dist_stop_threshold:
       hyperblink(red)
-    else
+    else:
       lightsoff()
     time.sleep(0.5)
 
