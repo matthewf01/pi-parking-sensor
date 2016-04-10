@@ -23,7 +23,7 @@ green = GPIO.setup(LED_GREEN,GPIO.OUT)
 dist_warn= 30
 dist_stop= 15
 #Maximum allowable centimeters to exceed the exact stop distance "dist_stop"
-dist_stop_tolerance=0
+dist_stop_tolerance=3
 
 
 def slowblink(color):
