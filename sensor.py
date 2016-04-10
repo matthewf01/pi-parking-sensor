@@ -27,37 +27,6 @@ dist_stop_tolerance=3
 innerlimit = dist_stop - dist_stop_tolerance
 outerlimit = dist_stop + dist_stop_tolerance
 
-
-def slowblink(color):
-  GPIO.output(color,True)
-  time.sleep(0.4)
-  GPIO.output(color,False)
-  time.sleep(0.5)
-  
-def fastblink(color):
-  GPIO.output(color,True)
-  time.sleep(0.2)
-  GPIO.output(color,False)
-  time.sleep(0.1)
-
-def hyperblink(color):
-  GPIO.output(color,True)
-  time.sleep(0.1)
-  GPIO.output(color,False)
-  time.sleep(0.06)
-  GPIO.output(color,True)
-  time.sleep(0.1)
-  GPIO.output(color,False)
-  time.sleep(0.06)
-  GPIO.output(color,True)
-  time.sleep(0.1)
-  GPIO.output(color,False)
-  time.sleep(0.06)
-  GPIO.output(color,True)
-  time.sleep(0.1)
-  GPIO.output(color,False)
-  time.sleep(0.06)
-  
 def lightson():
   GPIO.output(LED_GREEN,True)
   GPIO.output(LED_RED, True)
@@ -66,6 +35,39 @@ def lightsoff():
   GPIO.output(LED_GREEN,False)
   GPIO.output(LED_RED, False)
 
+def slowblink(color):
+  lightsoff()
+  GPIO.output(color,True)
+  time.sleep(0.4)
+  GPIO.output(color,False)
+  time.sleep(0.5)
+  
+def fastblink(color):
+  lightsoff()
+  GPIO.output(color,True)
+  time.sleep(0.2)
+  GPIO.output(color,False)
+  time.sleep(0.1)
+
+def hyperblink(color):
+  lightsoff()
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  
 def measure():
   # This function measures a distance
   GPIO.output(GPIO_TRIGGER, True)
@@ -95,7 +97,7 @@ def calculate_average():
 GPIO.output(GPIO_TRIGGER, False)
 lightsoff()
 
-#Light test
+#Startup Light test
 GPIO.output(LED_RED, True)
 time.sleep(0.5)
 GPIO.output(LED_GREEN,True)
@@ -109,7 +111,7 @@ print "Starting ultrasonic distance measure"
 try:
   
   while True:
-    lightsoff()
+    #lightsoff()
     distance = calculate_average()
     print "Distance : %.1f" % distance
     if distance > dist_warn:
