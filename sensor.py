@@ -19,22 +19,18 @@ GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
 GPIO.setup(LED_RED,GPIO.OUT)
 GPIO.setup(LED_GREEN,GPIO.OUT)
 
+def lightsoff():
+  GPIO.output(LED_GREEN,False)
+  GPIO.output(LED_RED, False)
 
 # Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER, False)
 
-#turn the lights off
-GPIO.output(LED_RED, False)
-GPIO.output(LED_GREEN,False)
+lightsoff()
 
 # Allow module to settle
 time.sleep(0.5)
 
-def lightsoff():
-  GPIO.output(LED_GREEN,False)
-  GPIO.output(LED_RED, False)
-  
-  
 '''
 #Light test
 GPIO.output(LED_RED, True)
