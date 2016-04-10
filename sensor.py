@@ -16,8 +16,17 @@ LED_GREEN = 15
 # Set pins as output and input
 GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger
 GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
-GPIO.setup(LED_RED,GPIO.OUT)
-GPIO.setup(LED_GREEN,GPIO.OUT)
+red = GPIO.setup(LED_RED,GPIO.OUT)
+green = GPIO.setup(LED_GREEN,GPIO.OUT)
+
+dist_warn= 30
+dist_stop= 15
+
+def slowblink(color):
+  GPIO.output(color,True)
+  time.sleep(0.5)
+  GPIO.output(color,False)
+  time.sleep(0.5)
 
 def lightsoff():
   GPIO.output(LED_GREEN,False)
