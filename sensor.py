@@ -113,9 +113,9 @@ try:
      slowblink(LED_GREEN)
     elif distance <= dist_warn and distance > dist_stop:
       fastblink(LED_RED)
-    elif distance < dist_warn and distance == dist_stop + dist_stop_threshold:
+    elif distance < dist_warn and distance == dist_stop + dist_stop_tolerance:
       lightson()
-    elif distanance < dist_stop - dist_stop_threshold:
+    elif distanance < dist_stop - dist_stop_tolerance:
       hyperblink(LED_RED)
     else:
       lightsoff()
