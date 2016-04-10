@@ -68,7 +68,7 @@ try:
   while True:
     distance = calculate_average()
     print "Distance : %.1f" % distance
-    time.sleep(1)
+    time.sleep(0.5)
 
 except KeyboardInterrupt:
   # User pressed CTRL-C
