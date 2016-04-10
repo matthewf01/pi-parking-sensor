@@ -23,8 +23,21 @@ GPIO.setup(LED_GREEN,GPIO.OUT)
 # Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER, False)
 
+#turn the lights off
+GPIO.output(LED_RED, False)
+GPIO.output(LED_GREEN,False)
+
 # Allow module to settle
 time.sleep(0.5)
+
+#Light test
+GPIO.output(LED_RED, True)
+time.sleep(1)
+GPIO.output(LED_GREEN,True)
+GPIO.output(LED_RED, False)
+time.sleep(1)
+GPIO.output(LED_GREEN,False)
+
 
 print "Starting ultrasonic distance measure"
 
