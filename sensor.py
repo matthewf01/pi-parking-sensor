@@ -118,7 +118,7 @@ try:
       fastblink(LED_RED)
       print ("Inside warn range")
     #elif distance in range(innerlimit,outerlimit):
-    elif distance >= innerlimit distance and <= outerlimit:
+    elif distance >= innerlimit and distance <= outerlimit:
       lightson()
       print("Stop, perfect")
     elif distance < dist_stop - dist_stop_tolerance:
