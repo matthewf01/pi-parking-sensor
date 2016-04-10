@@ -23,57 +23,55 @@ def lightsoff():
   GPIO.output(LED_GREEN,False)
   GPIO.output(LED_RED, False)
 
+def measure():
+  # This function measures a distance
+  GPIO.output(GPIO_TRIGGER, True)
+  time.sleep(0.00001)
+  GPIO.output(GPIO_TRIGGER, False)
+  start = time.time()
+  while GPIO.input(GPIO_ECHO)==0:
+    start = time.time()
+  while GPIO.input(GPIO_ECHO)==1:
+    stop = time.time()
+  elapsed = stop-start
+  distance = (elapsed * 34300)/2
+  return distance
+  
+def calculate_average():
+  # This function takes 3 measurements and returns the average.
+  distance1=measure()
+  time.sleep(0.1)
+  distance2=measure()
+  time.sleep(0.1)
+  distance3=measure()
+  distance = distance1 + distance2 + distance3
+  distance = distance / 3
+  return distance
+
 # Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER, False)
-
 lightsoff()
 
-# Allow module to settle
-time.sleep(0.5)
-
-'''
 #Light test
 GPIO.output(LED_RED, True)
-time.sleep(1)
+time.sleep(0.5)
 GPIO.output(LED_GREEN,True)
-time.sleep(1)
+time.sleep(0.5)
 GPIO.output(LED_RED, False)
-time.sleep(1)
+time.sleep(0.5)
 GPIO.output(LED_GREEN,False)
-'''
 
 print "Starting ultrasonic distance measure"
 
-while True:
-    # Send 10us pulse to trigger 
-    GPIO.output(GPIO_TRIGGER, True)
-    time.sleep(0.00001)
-    GPIO.output(GPIO_TRIGGER, False)
-    start = time.time()
-    while GPIO.input(GPIO_ECHO)==0:
-      start = time.time()
-      GPIO.output(LED_GREEN,True)
-
-    while GPIO.input(GPIO_ECHO)==1:
-      stop = time.time()
-      GPIO.output(LED_GREEN,False)
-      GPIO.output(LED_RED, True)
-
-    # Calculate pulse length
-    elapsed = stop-start
-
-    # Distance pulse travelled in that time is time
-    # multiplied by the speed of sound (cm/s)
-    distance = elapsed * 34000
-
-    # That was the distance there and back so halve the value
-    distance = distance / 2
-
+try:
+  
+  while True:
+    distance = measure_average()
     print "Distance : %.1f" % distance
-    lightsoff()
     time.sleep(1)
 
-# Reset GPIO settings
-lightsoff()
-GPIO.cleanup()
-
+except KeyboardInterrupt:
+  # User pressed CTRL-C
+  # Reset GPIO settings
+  lightsoff()
+  GPIO.cleanup()
