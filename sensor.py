@@ -7,12 +7,18 @@ import RPi.GPIO as GPIO
 
 #GPIO setup
 GPIO.setmode(GPIO.BCM)
+#ultrasonic sensor
 GPIO_TRIGGER = 23
 GPIO_ECHO = 24
+LED_RED = 18
+LED_GREEN = 15
 
 # Set pins as output and input
 GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger
 GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
+GPIO.setup(LED_RED,GPIO.OUT)
+GPIO.setup(LED_GREEN,GPIO.OUT)
+
 
 # Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER, False)
