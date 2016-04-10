@@ -24,6 +24,8 @@ dist_warn= 30
 dist_stop= 15
 #Maximum allowable centimeters to exceed the exact stop distance "dist_stop"
 dist_stop_tolerance=3
+innerlimit = dist_stop - dist_stop_tolerance
+outerlimit = dist_stop + dist_stop_tolerance
 
 
 def slowblink(color):
@@ -115,7 +117,7 @@ try:
     elif distance <= dist_warn and distance > dist_stop + dist_stop_tolerance:
       fastblink(LED_RED)
       print ("Inside warn range")
-    elif distance in range(dist_stop-dist_stop_tolerance,dist_stop+dist_stop_tolerance):
+    elif distance in range(innerlimit,outerlimit):
       lightson()
       print("Stop, perfect")
     elif distance < dist_stop - dist_stop_tolerance:
