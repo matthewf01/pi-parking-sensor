@@ -106,7 +106,7 @@ try:
     distance = calculate_average()
     print "Distance : %.1f" % distance
     if distance > dist_warn:
-     slowblink(green)
+     slowblink(LED_GREEN)
     time.sleep(0.5)
     
 
