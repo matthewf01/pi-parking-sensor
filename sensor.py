@@ -66,7 +66,7 @@ print "Starting ultrasonic distance measure"
 try:
   
   while True:
-    distance = measure_average()
+    distance = calculate_average()
     print "Distance : %.1f" % distance
     time.sleep(1)
 
