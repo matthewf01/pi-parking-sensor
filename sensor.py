@@ -109,6 +109,7 @@ print "Starting ultrasonic distance measure"
 try:
   
   while True:
+    lightsoff()
     distance = calculate_average()
     print "Distance : %.1f" % distance
     if distance > dist_warn:
