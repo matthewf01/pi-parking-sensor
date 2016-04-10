@@ -105,10 +105,11 @@ try:
   while True:
     distance = calculate_average()
     print "Distance : %.1f" % distance
+    if distance > dist_warn:
+     slowblink(green)
     time.sleep(0.5)
     
-  if distance > dist_warn:
-    slowblink(green)
+
 #  elseif distance <= distwarn or
 
 except KeyboardInterrupt:
