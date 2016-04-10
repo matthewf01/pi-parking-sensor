@@ -19,15 +19,43 @@ GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
 red = GPIO.setup(LED_RED,GPIO.OUT)
 green = GPIO.setup(LED_GREEN,GPIO.OUT)
 
+#parking distances
 dist_warn= 30
 dist_stop= 15
+#Maximum allowable centimeters to exceed the exact stop distance "dist_stop"
+dist_stop_tolerance=0
+
 
 def slowblink(color):
   GPIO.output(color,True)
-  time.sleep(0.5)
+  time.sleep(0.4)
   GPIO.output(color,False)
   time.sleep(0.5)
+  
+def fastblink(color):
+  GPIO.output(color,True)
+  time.sleep(0.2)
+  GPIO.output(color,False)
+  time.sleep(0.1)
 
+def hyperblink(color):
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  GPIO.output(color,True)
+  time.sleep(0.1)
+  GPIO.output(color,False)
+  time.sleep(0.06)
+  
 def lightsoff():
   GPIO.output(LED_GREEN,False)
   GPIO.output(LED_RED, False)
@@ -78,6 +106,10 @@ try:
     distance = calculate_average()
     print "Distance : %.1f" % distance
     time.sleep(0.5)
+    
+  if distance > dist_warn:
+    slowblink(green)
+#  elseif distance <= distwarn or
 
 except KeyboardInterrupt:
   # User pressed CTRL-C
