@@ -74,6 +74,7 @@ while True:
     distance = distance / 2
 
     print "Distance : %.1f" % distance
+    lightsoff()
     time.sleep(3)
 
 # Reset GPIO settings
