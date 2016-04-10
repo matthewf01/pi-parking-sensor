@@ -111,12 +111,16 @@ try:
     print "Distance : %.1f" % distance
     if distance > dist_warn:
      slowblink(LED_GREEN)
+     Print("far away")
     elif distance <= dist_warn and distance > dist_stop + dist_stop_tolerance:
       fastblink(LED_RED)
+      Print ("Inside warn range")
     elif distance in range(dist_stop-dist_stop_tolerance,dist_stop+dist_stop_tolerance):
       lightson()
+      print("Stop, perfect")
     elif distance < dist_stop - dist_stop_tolerance:
       hyperblink(LED_RED)
+      print("Too close")
     else:
       lightsoff()
     time.sleep(0.5)
