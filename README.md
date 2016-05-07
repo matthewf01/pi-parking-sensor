@@ -17,9 +17,15 @@ Configure your warn/stop and +/- threshold distances in the top of the script.
 
 
 GPIO:
+
 5V -- power rail
+
 GND -- ground rail
+
 GPIO15 -- GREEN LED +
+
 GPIO18 -- RED LED +
+
 GPIO23 -- TRIGGER (HC-SR04 sensor)
+
 GPIO24 -- ECHO (HC-SR04 sensor) (after 330ohm resistor coming off sensor, then 470ohm resistor connecting to GND)
